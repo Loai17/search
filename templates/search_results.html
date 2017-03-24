@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Boost - Search Results</title>
+<!-- custom -->
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.js') }}"></script>
+<!-- <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+ --><link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+<!--  -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{url_for('static',filename='lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Additional fonts for this theme -->
+    <link href="{{url_for('static',filename='lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{{url_for('static',filename='lib/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="{{url_for('static',filename='css/creative.min.css')}}" rel="stylesheet">
+
+    <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+    
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+
+</head>
+   <style type="text/css">
+        body{
+            background-color: #2c76c7;
+        }
+    </style>
+<body>
+<!-- Navigation -->
+ <!--    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" 
+            data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" rel="home" href="{{url_for('home')}}" title="Boost">
+        <img style="max-width:46px; margin-top: -13px;" src="/static/pic/boost_logo.png">
+    </a>
+</div>
+    
+    <ul class="nav navbar-nav">
+      <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+     
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      
+      <li><a href={{url_for('login')}}><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out </a></li>
+    </ul>
+  </div>
+</nav> -->
+
+    <!-- Navigation -->
+<!--     <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container">
+            <a class="navbar-brand" rel="home" href="{{url_for('home')}}" title="Boost">
+            <img style="max-width: 50px; margin-top: 0px; margin-right: -20px; margin-bottom: -3px;" src="/static/pic/boost_logo.png">
+            </a>
+            <a class="navbar-brand page-scroll" href="{{url_for('home')}}">Boost</a>
+            <div class="collapse navbar-collapse" id="navbarExample">
+            </div>
+        </div>
+    </nav> -->
+<br>
+  
+    <header>
+        <div class="header-content" style="margin-top: -40px;">
+            <div class="header-content-inner">
+{% if search_results != [] %}
+{%for result in search_results%}
+<br>
+<div class="row">
+<div class="col-md-1"></div>
+<div class="list-group col-md-10" align="center">
+        <li class="list-group-item list-group-item-info"><strong><h3>Name: {{result.name}}</h3></strong></li>
+        <li class="list-group-item"><strong>Category:</strong> <i>{{result.category}}</i></li>
+        <li class="list-group-item"><strong>Address:</strong> <i>{{result.address}}, {{result.city}}</i></li>
+        <li class="list-group-item"><strong>Zipcode:</strong> <i>{{result.zipcode}}</i></li>
+        <li class="list-group-item"><strong>Phone:</strong> <i>{{result.phone}}</i></li>
+        <li class="list-group-item"><strong>Email:</strong> <i>{{result.email}}</i></li>
+</div></div>
+  {%endfor%}
+  {% else %}
+  <h3>Sorry. We couldn't find what you're looking for.</h3>
+  {% endif %}
+        </div>
+        </div>
+    </header>
+
+</body>
+</html>
